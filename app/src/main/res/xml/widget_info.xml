@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  updatePeriodMillis is set to Android's real floor (30 min) - the OS silently clamps anything
+  faster anyway. That alone would make the widget feel stale next to the 60s-refreshed
+  notification, so UsageTrackingService also pushes an immediate RemoteViews update to every
+  placed widget instance on every poll cycle (see ByteTrackWidgetProvider.pushUpdate, called from
+  UsageTrackingService.updateNotification) - this tag is just the OS-mandated backup floor in
+  case the tracking service isn't currently running.
+-->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="180dp"
+    android:minHeight="90dp"
+    android:targetCellWidth="3"
+    android:targetCellHeight="1"
+    android:updatePeriodMillis="1800000"
+    android:initialLayout="@layout/widget_usage"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen"
+    android:description="@string/widget_description" />

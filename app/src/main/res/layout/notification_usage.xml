@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Custom RemoteViews layout for the always-on tracking notification.
+  Android's stock NotificationCompat.Builder only supports a single progress bar, but this
+  notification needs two independent ones (data usage, screen time) side by side, so we build
+  our own compact layout instead. Kept intentionally simple - RemoteViews only supports a
+  limited subset of widgets (no Compose, no custom views).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/notif_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="byte!track is watching"
+        android:textColor="#FF6A1A"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <!-- Data usage row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Data today"
+            android:textColor="#A0A0A6"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/notif_data_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 MB"
+            android:textColor="#F5F5F7"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/notif_data_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_marginTop="3dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="#FF6A1A"
+        android:progressBackgroundTint="#33FFFFFF" />
+
+    <!-- Screen time row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Screen time today"
+            android:textColor="#A0A0A6"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/notif_screen_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0m"
+            android:textColor="#F5F5F7"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/notif_screen_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_marginTop="3dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="#3AA6FF"
+        android:progressBackgroundTint="#33FFFFFF" />
+
+</LinearLayout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Home-screen widget, deliberately mirroring the Dashboard's "Data used" / "Screen time" bento
+  row - same two labels, same two-line label/value layout, same color roles (orange for data,
+  blue for screen time). RemoteViews can't share Compose code with the in-app screens, so this is
+  a hand-kept parallel layout; if you change the Dashboard bento cards, update this too.
+
+  Both cards use identical structure + minHeight + singleLine/ellipsize on the value, so they
+  stay the same size regardless of whether the value is a short "42m" or a longer "1,024.0 MB" -
+  same equal-height fix applied to the in-app Dashboard cards (see DashboardScreen.kt).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_background"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textColor="@color/byte_orange"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/widget_updated_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/text_secondary"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <!-- Data used bento -->
+        <LinearLayout
+            android:id="@+id/widget_data_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="64dp"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:background="@drawable/widget_card_bg"
+            android:padding="12dp"
+            android:layout_marginEnd="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/widget_label_data"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/widget_data_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="0 B"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:singleLine="true"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <!-- Screen time bento -->
+        <LinearLayout
+            android:id="@+id/widget_screen_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="64dp"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:background="@drawable/widget_card_bg"
+            android:padding="12dp"
+            android:layout_marginStart="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/widget_label_screen_time"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/widget_screen_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="0m"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:singleLine="true"
+                android:ellipsize="end" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
