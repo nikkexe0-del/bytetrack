@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="void_black">#0A0A0B</color>
+    <color name="carbon_black">#141416</color>
+    <color name="byte_orange">#FF6A1A</color>
+    <color name="text_primary">#F5F5F7</color>
+    <color name="text_secondary">#A0A0A6</color>
+    <color name="wifi_color">#3AA6FF</color>
+    <color name="hotspot_color">#B57BFF</color>
+    <color name="widget_card_stroke">#33FFFFFF</color>
+</resources>

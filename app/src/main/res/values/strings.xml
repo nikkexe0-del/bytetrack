@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">byte!track</string>
+    <string name="widget_label_data">Data used</string>
+    <string name="widget_label_screen_time">Screen time</string>
+    <string name="widget_description">Today\'s data usage and screen time, at a glance.</string>
+</resources>
